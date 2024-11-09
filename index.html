@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIKEWALE.COM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: url(websitebikewall.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            padding: 20px;
+        }
+        
+        #navbar {
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Changed to space-between for better alignment */
+            border-bottom: 1px solid black;
+            padding: 10px;
+        }
+        
+        #img {
+            width: 80px;
+        }
+        
+        #heading {
+            margin-left: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        
+        #credi {
+            margin-left: auto;
+        }
+        
+        #credi a {
+            padding: 5px;
+            color: black;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+        
+        #credi a:hover {
+            background-color: rgba(255, 0, 0, 0.537);
+            border-radius: 3px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px; /* Adjusted maximum width for responsiveness */
+            margin: 0 auto;
+            padding: 20px; /* Added padding for better spacing */
+            text-align: center; /* Center-align content */
+        }
+        
+        form {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            margin-top: 20px; /* Added margin-top for spacing */
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+            display: inline-block; /* Adjusted display property for proper alignment */
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: small; /* Added font size for better readability */
+        }
+        
+        .input-group select,
+        .input-group input[type="text"],
+        .input-group input[type="date"] {
+            width: 100%; /* Changed width to 100% for responsiveness */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        #outbox {
+            width: 100%;
+            max-width: 800px; /* Adjusted maximum width for responsiveness */
+            margin: 0 auto;
+            padding: 20px; /* Added padding for better spacing */
+            font-size: 8; /* Corrected font size */
+            font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+            background-color: rgb(245, 76, 15);
+            text-align: center;
+            transition: all 1s;
+            margin-top: 20px; /* Added margin-top for spacing */
+            border-radius: 5px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        table, th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: black;
+            color: white;
+        }
+        
+        td {
+            background-color: white;
+        }
+    </style>
+</head>
+<body onload="display_post()">
+    <div class="container">
+        <div id="navbar">
+            <img id="img" src="Retro Motorcycle Community Club Badge Logo.png" alt="logo">
+            <h1 id="heading">BIKE WALE</h1>
+            <div id="credi">
+                <a href="index.html">Home</a>
+                <a href="postvehicle.html" style="display: none;" id="postLink">Post Your Vehicle</a>
+                <a href="signup.html">Sign Up</a>
+                <a href="login.html">Login</a>
+            </div>
+        </div>
+        <form>
+            <label for="dropdown" style="background-color: black;color:white;padding: 10px;"><u><b>RENT A VEHICLE</b></u></label><br><br>
+            <div id="drop" class="input-group">
+                <label for="dropdown">MANUFACTURER</label>
+                <select name="dropdown" id="manufacturer">
+                    <option value="RE-001">Royal Enfield</option>
+                    <option value="TVS-001">TVS Motors</option>
+                    <option value="BM-001">Bajaj Motors</option>
+                </select>
+            </div>
+            <div id="State" class="input-group">
+                <label for="dropdown">State</label>
+                <select name="dropdown" id="state">
+                    <option value="Delhi">Delhi</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Karnataka">Karnataka</option>
+                </select>
+            </div>
+            <div id="City" class="input-group">
+                <label for="dropdown">City</label>
+                <select name="dropdown" id="city">
+                    <option value="New Delhi">New Delhi</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Bangalore">Bangalore</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <button type="button" onclick="show()">Submit</button>
+            </div>
+        </form>
+        <div id="outbox">
+            <table id="vehicleTable" cellpadding="5" cellspacing="5">
+                <tr>
+                    <th>Model</th>
+                    <th>Available From</th>
+                    <th>Available To</th>
+                    <th>Registration Year</th>
+                    <th>Owner Address</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Slideshow Container -->
+    <div class="slideshow-container">
+        <!-- Full-width images with number text -->
+        <div class="mySlides">
+            <img src="https://images.unsplash.com/photo-1701567106948-7a452fda561c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width:100%">
+        </div>
+        <div class="mySlides">
+            <img src="https://images.unsplash.com/photo-1659331367766-c976b58a2539?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width:100%">
+        </div>
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        <!-- Image text -->
+        <div class="caption-container">
+            <p id="caption"></p>
+        </div>
+    </div>
+
+    <script>
+        function display_post(){
+            var session = document.cookie;
+            
+            if(sessionStorage.getItem("username")!=="" && sessionStorage.getItem("username")!==null){
+               let b =  document.getElementById("postLink");
+               b.style.display="inline";
+
+		let c =  document.getElementById("user");
+		c.value="Welcome "+ sessionStorage.getItem("username");
+               c.style.display="inline";
+
+                
+                
+                
+            }
+        }
+        function show() {
+           /*  let a = document.getElementById("dropdown").value;
+            document.getElementById("para").innerHTML = a;
+            document.getElementById("outbox").style.display = "block"; */
+//clear all table data
+const table = document.getElementById('vehicleTable');
+    var rowCount = table.rows.length;
+
+    // Loop through each row and remove it
+    for (var i = rowCount - 1; i > 0; i--) {
+        table.deleteRow(i);
+    }
+var manufacturer= document.getElementById("manufacturer");
+var selectedManufacturer=manufacturer.options[manufacturer.selectedIndex];
+
+var state=document.getElementById("state");
+var selectedState=state.options[state.selectedIndex];
+
+var city=document.getElementById("city");
+var selectedCity=city.options[city.selectedIndex];
+
+
+fetch('https://bpv5njoijj.execute-api.ap-southeast-1.amazonaws.com/vehicleListings', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+  "manufacturer": selectedManufacturer.value,
+  "state": selectedState.value,
+  "city": selectedCity.value
+}),
+})
+.then(response => response.json())
+.then(data => {
+  const table = document.getElementById('vehicleTable');
+
+  data.forEach(item => {
+    const row = table.insertRow();
+    row.insertCell(0).textContent = item.ModelName;
+    row.insertCell(1).textContent = item.AvailableFrom;
+    row.insertCell(2).textContent = item.AvailableTo;
+    row.insertCell(3).textContent = item.RegistrationYear;
+    row.insertCell(4).textContent = item.OwnerAddress;
+var img=document.createElement("img");
+
+img.src=item.imageLink;
+img.width=20;
+img.height=20;
+var imageCell=row.insertCell(5);
+var link=document.createElement("a");
+link.href=item.imageLink;
+link.appendChild(img);
+    imageCell.appendChild(link);
+  });
+})
+.catch((error) => {
+  console.error('Error:', error);
+});
+
+
+        }
+        let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("demo");
+  let captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+
+    </script>
+
+</body>
+</html>

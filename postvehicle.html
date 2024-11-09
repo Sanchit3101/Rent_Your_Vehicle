@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIKEWALE.COM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: url(websitebikewall.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            padding: 20px;
+        }
+        
+        #navbar {
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            border-bottom: 1px solid black;
+            padding: 10px;
+        }
+        
+        #img {
+            width: 80px;
+        }
+        
+        #heading {
+            margin-left: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        
+        #credi {
+            margin-left: auto;
+        }
+        
+        #credi a {
+            padding: 5px;
+            color: black;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+        
+        #credi a:hover {
+            background-color: rgba(255, 0, 0, 0.537);
+            border-radius: 3px;
+        }
+        
+        #label {
+            width: 80%;
+            margin: 0 auto;
+            font-size: x-large;
+            font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+            height: auto;
+            background-color: rgb(245, 76, 15);
+            text-align: center;
+            padding: 20px;
+            transition: all 1s;
+            margin-top: 50px;
+            border-radius: 10px;
+        }
+        
+        #label:hover {
+            box-shadow: 10px 10px 10px black;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .input-group input[type="text"],
+        .input-group select,
+        .input-group input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button {
+            margin-top: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        #outbox {
+            width: 80%;
+            margin: 0 auto;
+            font-size: x-large;
+            font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+            height: 300px;
+            background-color: rgb(245, 76, 15);
+            text-align: center;
+            padding: 20px;
+            transition: all 1s;
+            display: none;
+            margin-top: 50px;
+            border-radius: 10px;
+        }
+
+        @media only screen and (min-width: 768px) {
+            /* Adjustments for tablets and desktop */
+            #label {
+                width: 60%;
+            }
+            #outbox {
+                width: 60%;
+            }
+        }
+    </style>
+   
+</head>
+<body onload="displayPage()">
+    <div id="navbar">
+        <img id="img" src="Retro Motorcycle Community Club Badge Logo.png" alt="logo">
+        <h1 id="heading">BIKE WALE</h1>
+        <div id="credi">
+            <a href="index.html">Home</a>
+            
+            <a href="signup.html">Sign Up</a>
+            <a href="login.html">Login</a>
+        </div>
+    </div>
+    <form action="" id="label">
+        <h1>POST YOUR VEHICLE</h1>
+        <p><b>Please fill in this form to create an account.</b></p>
+        <hr>
+    
+        <label for="MANUFACTURER"><b>MANUFACTURER</b></label><br>
+        <select name="MANUFACTURER" id="manu" style="padding: 5px;width: 250px;" >
+            <option value="">Select</option>
+            <option value="RoyalEnfeild">RoyalEnfeild</option>
+            <option value="TVS Motors">TVS Motors</option>
+            <option value="BajajMotors">BajajMotors</option>
+
+        </select><br>
+    
+        <label for="Model"><b>Model</b></label><br>
+        <select name="MODEL" id="model" style="padding: 5px;width: 250px;" >
+            <option value="">Select</option>
+            <option value="RE-001">Hunter350</option>
+            <option value="RE-002">Shotgun650</option>
+            <option value="RE-003">Himalyan411</option>
+            <option value="RE-004">Himalyan450</option>
+
+        </select><br>                               
+       
+        <label for="STATE"><b>State</b></label><br>
+        <select name="State" id="State" style="padding: 5px;width: 250px;" >
+            <option value="">Select</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Maharastra">Maharastra</option>
+            <option value="Karnataka">Karnataka</option>
+
+        </select><br>
+
+        <label for="City"><b>City</b></label><br>
+        <select name="City" id="City" style="padding: 5px;width: 250px;" >
+            <option value="">Select</option>
+            <option value="New Delhi">New Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Bangalore">Bangalore</option>
+
+        </select><br>
+        <label for="OwnerName"><b>OwnerName</b></label><br>
+        <input type="text" placeholder="Owner Name" name="ownerName" style="padding: 5px;width: 250px;"  required>
+        <BR>
+            <label for="Address"><b>Address</b></label><br>
+            <input type="text" placeholder="Enter Your Address" name="ownerName" style="padding: 5px;width: 250px;" required><br>
+        <label for="ContactNumber"><b>ContactNumber</b></label><br>
+        <input type="text" placeholder="Enter Contact Number" name="contact" style="padding: 5px;width: 250px;" required><br>
+    
+        <label for="PostalCode"><b>PostalCode</b></label><br>
+        <input type="text" placeholder="Enter Postal Code" name="contact"style="padding: 5px;width: 250px;"  required><br>
+    
+        <label for="Ryear"><b>Registration Year</b></label><br>
+        <select name="MODEL" id="model" style="padding: 5px;width: 250px;" >
+            <option value="">Select</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+            <option value="2021">2021</option>
+
+        </select><br>
+
+        <label for="AvailableFrom">AvailableFrom:</label><br>
+<input type="date" id="AvailableFrom" name="AvailableFrom"style="padding: 5px;width: 250px;" ><br>
+
+<label for="AvailableTo">AvailableTo:</label><br>
+<input type="date" id="AvailableTo" name="AvailableTo"style="padding: 5px;width: 250px;" >
+
+        <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+    
+        <div class="clearfix">
+            <button type="button" class="signupbtn" onClick="handleSignUp()">Post</button>
+        </div>
+    </form>
+    
+    <div id="outbox">
+        <p id="para"></p>
+    </div>
+
+    <script>
+        function show() {
+            let a = document.getElementById("dropdown").value;
+            document.getElementById("para").innerHTML = a;
+            document.getElementById("outbox").style.display = "block";
+        }
+        function displayPage(){
+        var session = document.cookie;
+        if(sessionStorage.getItem("username")=="" || sessionStorage.getItem("username")==null){
+            window.location.href="login.html"
+
+            
+            
+            
+        }
+    }
+
+    </script>
+</body>
+</html>

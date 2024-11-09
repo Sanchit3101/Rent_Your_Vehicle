@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIKEWALE.COM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: url(websitebikewall.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            padding: 20px;
+        }
+        
+        #navbar {
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            border-bottom: 1px solid black;
+            padding: 10px;
+        }
+        
+        #img {
+            width: 80px;
+        }
+        
+        #heading {
+            margin-left: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        
+        #credi {
+            margin-left: auto;
+        }
+        
+        #credi a {
+            padding: 5px;
+            color: black;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+        
+        #credi a:hover {
+            background-color: rgba(255, 0, 0, 0.537);
+            border-radius: 3px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 600px; /* Adjusted maximum width */
+            margin: 0 auto;
+            text-align: center; /* Center-align the form */
+        }
+        
+        form {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.8); /* Added background color with opacity */
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <img id="img" src="Retro Motorcycle Community Club Badge Logo.png" alt="logo">
+        <h1 id="heading">BIKE WALE</h1>
+        <div id="credi">
+            <a href="index.html">Home</a>
+            <a href="signup.html">Sign Up</a>
+            <a href="">Login</a>
+        </div>
+    </div>  
+
+    <div class="container">
+        <form action="action_page.php" method="post">
+            <h1>Sign Up</h1>
+            <p>Please fill in this form to create an account.</p>
+            <hr>
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+            <label for="psw-repeat"><b>Repeat Password</b></label>
+            <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+            <div class="clearfix">
+                <button type="button" class="signupbtn" onClick="handleSignUp()">Sign Up</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+       function handleSignUp(){
+   // Retrieve form inputs
+   var email = document.getElementsByName('email')[0].value;
+            var password = document.getElementsByName('psw')[0].value;
+            var repeatPassword = document.getElementsByName('psw-repeat')[0].value;
+
+            // Check if passwords match
+            if (password !== repeatPassword) {
+                alert("Passwords do not match.");
+                return;
+            }
+
+            var passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$/;
+    if (!passwordRegex.test(password)) {
+        alert("Password must be at least 8 characters long, contain at least one uppercase letter, and one special character.");
+        return;
+    }
+
+            // Construct JSON object
+            var formData = {
+                "username": email,
+                "password": password
+            };
+
+            // Convert JSON object to string
+            var jsonData = JSON.stringify(formData);
+            //alert(jsonData);
+             
+
+            // Display JSON data (for demonstration)
+            console.log(jsonData);
+            fetch('https://cny7t2qp53.execute-api.ap-southeast-1.amazonaws.com/cognoitostage', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-api-key': 'pznnyue6O45Dtjl42bH8i5eaOFKR6qGla5Onpefw'
+                },
+                body: jsonData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle the response from the server
+                //alert(JSON.stringify(data));
+                // Extract statusCode and body from the JSON response
+                const { statusCode, body } = data;
+                if(statusCode==200)
+                {
+                  alert(body);
+                  window.location.href="login.html"
+                  console.log('Success:', data);
+
+                }else{
+                 
+                  alert(body);
+                  
+                }
+               
+                
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again later.'+error);
+            });
+        }
+      
+ 
+
+        
+    </script>
+</body>
+</html>
